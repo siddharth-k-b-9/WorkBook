@@ -1,0 +1,42 @@
+﻿@model WorkBook.Book
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Custom.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <h4>Book Details</h4>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BookName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BookName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.User.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.Name)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.BookID }, new { @class = "btn" }) |
+        @Html.ActionLink("Back to List", "Index", new { userID = Model.UserID }, new { @class = "btn" })
+    </p>
+    </body>
+</html>

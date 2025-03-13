@@ -1,0 +1,42 @@
+﻿@model WorkBook.Page
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Custom.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <h4>Page Details</h4>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PContent)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PContent)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Book.BookName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Book.BookName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PageID }, new { @class = "btn" }) |
+        @Html.ActionLink("Back to List", "Index", new { bookID = Model.PBookID }, new { @class = "btn" })
+    </p>
+    </body>
+</html>

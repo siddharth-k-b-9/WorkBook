@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WorkBook.Book>
+
+@{
+    ViewBag.Title = "Books Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Custom.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h4>Book</h4>
+
+    <p>
+        @Html.ActionLink("Create New", "Create", new { userID = ViewBag.UserID }, new { @class = "create" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookName)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.User.Name)
+                </th>*@
+            <th>
+
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookName)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.User.Name)
+                    </td>*@
+                <td>
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id=" dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Manage <span class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.BookID }, new { @class = "btn" }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.BookID }, new { @class = "btn" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.BookID }, new { @class = "btn" }) 
+                        </div>
+                        @Html.ActionLink("View/Add Pages", "Index", "Pages", new { bookID = item.BookID }, new { @class = "btn" })
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div>
+        @Html.ActionLink("Back to User Index", "Index", "Users", new { userID = ViewBag.UserID }, new { @class = "btn" })
+    </div>
+    </body>
+</html>
